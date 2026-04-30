@@ -17,16 +17,15 @@
             padding: 20px;
             border-radius: 15px;
             display: inline-block;
-            border: 2px solid #a333ff;
-            box-shadow: 0 0 20px #a333ff;
+            box-shadow: 0 0 20px #00ff00;
+            max-width: 300px;
         }
         img {
-            width: 250px;
-            border-radius: 10px;
+            width: 150px;
+            border-radius: 50%;
+            border: 3px solid #00ff00;
             margin-bottom: 15px;
         }
-        h1 { color: #a333ff; margin-bottom: 10px; }
-        
         .fb-button {
             display: inline-block;
             background-color: #1877F2; /* لون فيسبوك */
@@ -38,9 +37,21 @@
             margin-top: 20px;
             transition: 0.3s;
         }
-        .fb-button:hover {
-            background-color: #145dbf;
-            box-shadow: 0 0 15px #1877F2;
+        .rbx-button {
+            display: inline-block;
+            background-color: #ffffff; /* لون أبيض لروبلوكس */
+            color: #000;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.3s;
+            border: 2px solid #000;
+        }
+        .fb-button:hover, .rbx-button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -51,12 +62,15 @@
         <img src="FB_IMG_1777521801062.jpg" alt="Gojo">
         <p>أهلاً بك في موقع zengy 👹 الملكي 👑</p>
         
-        <a href="https://www.facebook.com/share/16rWw6tdQr/" target="_blank" class="fb-button">
+        <a href="https://www.facebook.com/share/16rWw6tdSj/" class="fb-button">
             تابعني على فيسبوك 👍
         </a>
 
-        <p style="font-size: 0.8em; color: #555; margin-top: 20px;">Designed by Zengy</p>
+        <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="rbx-button">
+            تابعني على روبلوكس 🎮
+        </a>
     </div>
 
 </body>
 </html>
+
