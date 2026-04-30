@@ -55,7 +55,6 @@
             transition: 0.3s;
             border: 2px solid #000;
         }
-        /* زرار الموسيقى */
         .music-btn {
             background: none;
             border: 2px solid #00ff00;
@@ -66,6 +65,7 @@
             font-weight: bold;
             margin-top: 15px;
             width: 100%;
+            transition: 0.3s;
         }
         .music-btn:hover {
             background: #00ff00;
@@ -76,7 +76,7 @@
 <body>
 
     <audio id="myAudio" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <source src="https://files.catbox.moe/x9x00z.mp3" type="audio/mpeg">
     </audio>
 
     <div class="card">
@@ -92,19 +92,24 @@
             تابعني على روبلوكس 🎮
         </a>
 
-        <button class="music-btn" onclick="togglePlay()">تشغيل الموسيقى 🎵🔥</button>
+        <button class="music-btn" id="btn" onclick="togglePlay()">تشغيل X-SLIDE 🎵🔥</button>
     </div>
 
     <script>
         var audio = document.getElementById("myAudio");
+        var btn = document.getElementById("btn");
         
         function togglePlay() {
             if (audio.paused) {
                 audio.play();
-                document.querySelector(".music-btn").innerText = "إيقاف الموسيقى ⏸️";
+                btn.innerText = "إيقاف الموسيقى ⏸️";
+                btn.style.borderColor = "#ff0000";
+                btn.style.color = "#ff0000";
             } else {
                 audio.pause();
-                document.querySelector(".music-btn").innerText = "تشغيل الموسيقى 🎵🔥";
+                btn.innerText = "تشغيل X-SLIDE 🎵🔥";
+                btn.style.borderColor = "#00ff00";
+                btn.style.color = "#00ff00";
             }
         }
     </script>
