@@ -55,27 +55,11 @@
             transition: 0.3s;
             border: 2px solid #000;
         }
-        .music-btn {
-            background: none;
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 15px;
-            width: 100%;
-            transition: 0.3s;
-        }
-        .music-btn:hover {
-            background: #00ff00;
-            color: #000;
-        }
     </style>
 </head>
 <body>
 
-    <audio id="myAudio" loop>
+    <audio id="bgMusic" loop>
         <source src="https://files.catbox.moe/x9x00z.mp3" type="audio/mpeg">
     </audio>
 
@@ -91,27 +75,19 @@
         <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="rbx-button">
             تابعني على روبلوكس 🎮
         </a>
-
-        <button class="music-btn" id="btn" onclick="togglePlay()">تشغيل X-SLIDE 🎵🔥</button>
     </div>
 
     <script>
-        var audio = document.getElementById("myAudio");
-        var btn = document.getElementById("btn");
-        
-        function togglePlay() {
-            if (audio.paused) {
-                audio.play();
-                btn.innerText = "إيقاف الموسيقى ⏸️";
-                btn.style.borderColor = "#ff0000";
-                btn.style.color = "#ff0000";
-            } else {
-                audio.pause();
-                btn.innerText = "تشغيل X-SLIDE 🎵🔥";
-                btn.style.borderColor = "#00ff00";
-                btn.style.color = "#00ff00";
-            }
-        }
+        // الحل الوحيد الممكن: الموسيقى تشتغل مع أول لمسة للشاشة في أي مكان
+        window.addEventListener('click', function() {
+            var audio = document.getElementById('bgMusic');
+            audio.play();
+        }, { once: true });
+
+        window.addEventListener('touchstart', function() {
+            var audio = document.getElementById('bgMusic');
+            audio.play();
+        }, { once: true });
     </script>
 
 </body>
