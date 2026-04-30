@@ -10,13 +10,11 @@
             color: #00ff00;
             text-align: center;
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
             margin: 0;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .card {
             background: #1a1a1a;
@@ -25,7 +23,6 @@
             box-shadow: 0 0 25px #00ff00;
             max-width: 320px;
             width: 90%;
-            z-index: 1;
         }
         img {
             width: 150px;
@@ -58,20 +55,29 @@
             transition: 0.3s;
             border: 2px solid #000;
         }
-        .footer-text {
-            font-size: 0.8em;
+        /* زرار الموسيقى */
+        .music-btn {
+            background: none;
+            border: 2px solid #00ff00;
             color: #00ff00;
-            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
             cursor: pointer;
-            text-decoration: underline;
+            font-weight: bold;
+            margin-top: 15px;
+            width: 100%;
         }
-        /* لإخفاء مشغل يوتيوب */
-        #player { display: none; }
+        .music-btn:hover {
+            background: #00ff00;
+            color: #000;
+        }
     </style>
 </head>
 <body>
 
-    <div id="player"></div>
+    <audio id="myAudio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="card">
         <h1>zengy 👹 bot</h1>
@@ -86,41 +92,22 @@
             تابعني على روبلوكس 🎮
         </a>
 
-        <p class="footer-text" onclick="playMusic()">اضغط هنا لتشغيل الموسيقى 🎵🔥</p>
+        <button class="music-btn" onclick="togglePlay()">تشغيل الموسيقى 🎵🔥</button>
     </div>
 
     <script>
-        // تحميل مكتبة يوتيوب
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '0',
-                width: '0',
-                videoId: 'uS3T4k-S-qA', // كود أغنية X-SLIDE
-                playerVars: {
-                    'autoplay': 0,
-                    'loop': 1,
-                    'playlist': 'uS3T4k-S-qA'
-                }
-            });
-        }
-
-        function playMusic() {
-            if (player && player.playVideo) {
-                player.playVideo();
-                document.querySelector('.footer-text').innerText = "الموسيقى تعمل الآن.. استمتع! 🎧";
+        var audio = document.getElementById("myAudio");
+        
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                document.querySelector(".music-btn").innerText = "إيقاف الموسيقى ⏸️";
+            } else {
+                audio.pause();
+                document.querySelector(".music-btn").innerText = "تشغيل الموسيقى 🎵🔥";
             }
         }
-
-        // تشغيل برضه لو داس في أي حتة
-        document.body.addEventListener('click', playMusic, { once: true });
     </script>
 
 </body>
 </html>
-
