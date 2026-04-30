@@ -10,13 +10,13 @@
             color: #00ff00;
             text-align: center;
             font-family: Arial, sans-serif;
-            margin-top: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
+            overflow: hidden;
         }
         .card {
             background: #1a1a1a;
@@ -25,6 +25,7 @@
             box-shadow: 0 0 25px #00ff00;
             max-width: 320px;
             width: 90%;
+            z-index: 1;
         }
         img {
             width: 150px;
@@ -34,7 +35,6 @@
             margin-bottom: 15px;
             object-fit: cover;
         }
-        h1 { margin: 10px 0; font-size: 28px; }
         .fb-button {
             display: block;
             background-color: #1877F2;
@@ -58,27 +58,24 @@
             transition: 0.3s;
             border: 2px solid #000;
         }
-        .fb-button:hover, .rbx-button:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
         .footer-text {
             font-size: 0.8em;
-            color: #555;
+            color: #00ff00;
             margin-top: 20px;
+            cursor: pointer;
+            text-decoration: underline;
         }
+        /* لإخفاء مشغل يوتيوب */
+        #player { display: none; }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="https://files.catbox.moe/x9x00z.mp3" type="audio/mpeg">
-    </audio>
+    <div id="player"></div>
 
     <div class="card">
         <h1>zengy 👹 bot</h1>
         <img src="FB_IMG_1777521801062.jpg" alt="Gojo">
-        
         <p>أهلاً بك في موقع zengy 👹 الملكي 👑</p>
         
         <a href="https://www.facebook.com/share/16rWw6tdSj/" class="fb-button">
@@ -89,18 +86,41 @@
             تابعني على روبلوكس 🎮
         </a>
 
-        <p class="footer-text">(المس الشاشة في أي مكان لتشغيل الموسيقى 🎵)</p>
+        <p class="footer-text" onclick="playMusic()">اضغط هنا لتشغيل الموسيقى 🎵🔥</p>
     </div>
 
     <script>
-        // تشغيل الموسيقى مع أول لمسة
-        document.addEventListener('click', function() {
-            var audio = document.getElementById('bgMusic');
-            audio.play().catch(function(error) {
-                console.log("التحميل لسه شغال...");
+        // تحميل مكتبة يوتيوب
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: 'uS3T4k-S-qA', // كود أغنية X-SLIDE
+                playerVars: {
+                    'autoplay': 0,
+                    'loop': 1,
+                    'playlist': 'uS3T4k-S-qA'
+                }
             });
-        }, { once: true });
+        }
+
+        function playMusic() {
+            if (player && player.playVideo) {
+                player.playVideo();
+                document.querySelector('.footer-text').innerText = "الموسيقى تعمل الآن.. استمتع! 🎧";
+            }
+        }
+
+        // تشغيل برضه لو داس في أي حتة
+        document.body.addEventListener('click', playMusic, { once: true });
     </script>
 
 </body>
 </html>
+
