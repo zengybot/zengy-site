@@ -41,7 +41,6 @@
             border-radius: 30px;
             font-weight: bold;
             margin: 15px 0;
-            transition: 0.3s;
         }
         .rbx-button {
             display: block;
@@ -52,15 +51,18 @@
             border-radius: 30px;
             font-weight: bold;
             margin: 10px 0;
-            transition: 0.3s;
-            border: 2px solid #000;
+        }
+        #status {
+            font-size: 0.7em;
+            color: #555;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="https://files.catbox.moe/x9x00z.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://cdn.discordapp.com/attachments/1066465451634503730/1235189335467393044/X-SLIDE.mp3" type="audio/mpeg">
     </audio>
 
     <div class="card">
@@ -75,19 +77,25 @@
         <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="rbx-button">
             تابعني على روبلوكس 🎮
         </a>
+
+        <div id="status">المس الشاشة في أي مكان لتشغيل X-SLIDE 🎵</div>
     </div>
 
     <script>
-        // الحل الوحيد الممكن: الموسيقى تشتغل مع أول لمسة للشاشة في أي مكان
-        window.addEventListener('click', function() {
+        // دالة تشغيل الصوت
+        function startMusic() {
             var audio = document.getElementById('bgMusic');
-            audio.play();
-        }, { once: true });
+            audio.play().then(function() {
+                document.getElementById('status').innerText = "شغال الآن 🔥";
+                document.getElementById('status').style.color = "#00ff00";
+            }).catch(function(error) {
+                console.log("Error:", error);
+            });
+        }
 
-        window.addEventListener('touchstart', function() {
-            var audio = document.getElementById('bgMusic');
-            audio.play();
-        }, { once: true });
+        // اسمع لأي لمسة على الشاشة
+        window.addEventListener('click', startMusic, { once: true });
+        window.addEventListener('touchstart', startMusic, { once: true });
     </script>
 
 </body>
