@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>zengy 👹 bot</title>
     <style>
+        /* تصفير الإعدادات */
         * {
             margin: 0;
             padding: 0;
@@ -12,39 +13,40 @@
         }
 
         body {
-            /* السطر الحاسم: تم وضع اسم الصورة الطويل بدقة */
+            /* السطر الحاسم: اسم الصورة اللي في مشروعك بالظبط */
             background-image: url('C7957087f5841cc81bdd53b1dca7145d.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            background-color: #000; /* لون أسود احتياطي */
+            background-color: #050505; /* لون احتياطي */
             
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
 
-        /* طبقة حماية سوداء فوق الصورة عشان الكلام يظهر بوضوح */
+        /* طبقة تعتيم احترافية عشان الصورة زحمة والكلام يبان */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.7); /* تغميق الخلفية بنسبة 70% */
             z-index: -1;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05); /* شفافية احترافية */
-            padding: 40px 20px;
-            border-radius: 25px;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+            background: rgba(20, 20, 20, 0.6); /* خلفية الكارت شفافة */
+            padding: 40px 25px;
+            border-radius: 30px;
+            box-shadow: 0 0 35px rgba(0, 255, 0, 0.2);
             max-width: 350px;
             width: 90%;
             text-align: center;
-            border: 1px solid rgba(0, 255, 0, 0.4);
+            border: 1px solid rgba(0, 255, 0, 0.3);
             backdrop-filter: blur(15px); /* تأثير القزاز المغبش */
             -webkit-backdrop-filter: blur(15px);
         }
@@ -56,13 +58,14 @@
             border: 3px solid #00ff00;
             margin-bottom: 20px;
             object-fit: cover;
-            box-shadow: 0 0 15px #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
         }
 
         h1 { 
             color: #00ff00; 
-            font-size: 2em;
+            font-size: 2.2em;
             margin-bottom: 10px;
+            letter-spacing: 1px;
             text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
 
@@ -70,13 +73,13 @@
             color: #ffffff; 
             font-size: 1.1em;
             margin-bottom: 30px;
-            line-height: 1.6;
+            opacity: 0.9;
         }
 
         .btn {
             display: block;
             padding: 14px;
-            margin: 12px 0;
+            margin: 15px 0;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
@@ -87,27 +90,27 @@
         .fb { 
             background-color: #1877F2; 
             color: white; 
-            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);
+            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
         }
 
         .rbx { 
             background-color: #ffffff; 
             color: #000; 
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
         }
 
         .btn:hover { 
-            transform: translateY(-3px) scale(1.02);
+            transform: translateY(-5px);
             filter: brightness(1.2);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
         }
 
-        /* تأثير الأنيميشن للنص */
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #00ff00; }
-            to { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00; }
+        /* أنيميشن خفيف لاسم "zengy" */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
-
-        h1 { animation: glow 1.5s ease-in-out infinite alternate; }
+        h1 { animation: pulse 2s infinite alternate; }
 
     </style>
 </head>
@@ -115,9 +118,10 @@
 
     <div class="card">
         <img src="FB_IMG_1777521801062.jpg" alt="Profile" class="profile-img">
+        
         <h1>zengy 👹 bot</h1>
         
-        <p>أهلاً بك في عالم zengy 👹<br>المكان الرسمي للملوك 👑</p>
+        <p>أهلاً بك في موقع zengy 👹 الملكي 👑</p>
         
         <a href="https://www.facebook.com/share/16rWw6tdSj/" class="btn fb">فيسبوك الرسمي 👍</a>
         <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="btn rbx">روبلوكس 🎮</a>
