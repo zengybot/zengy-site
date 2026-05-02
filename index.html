@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZENGY 👹 ELITE</title>
+    <title>DEMONE // ELITE SYSTEM</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
 
         body {
+            /* اسم صورة الخلفية اللي في ملفاتك */
             background-image: url('C7957087f5841cc81bdd53b1dca7145d.jpg'); 
             background-size: cover;
             background-position: center;
@@ -21,7 +22,7 @@
             overflow: hidden;
         }
 
-        /* تأثير الميتريكس في الخلفية */
+        /* تأثير الميتريكس (الأكواد اللي بتنزل) */
         canvas {
             position: fixed;
             top: 0; left: 0;
@@ -41,124 +42,5 @@
             background: rgba(0, 0, 0, 0.8);
             padding: 50px 30px;
             border-radius: 20px;
-            box-shadow: 0 0 50px #0f0;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            border: 2px solid #0f0;
-            backdrop-filter: blur(10px);
-            z-index: 10;
-            position: relative;
-            animation: glitch 3s infinite;
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            2% { transform: translate(-2px, 2px); border-color: #f0f; }
-            4% { transform: translate(2px, -2px); border-color: #0f0; }
-            100% { transform: translate(0); }
-        }
-
-        .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid #0f0;
-            margin-bottom: 25px;
-            object-fit: cover;
-            filter: grayscale(0.5) contrast(1.2);
-            box-shadow: 0 0 20px #0f0;
-        }
-
-        h1 { 
-            color: #0f0; 
-            font-size: 2.8em;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px #000, 0 0 20px #0f0;
-        }
-
-        .status {
-            color: #0f0;
-            font-size: 0.9em;
-            margin-bottom: 30px;
-            border-right: 2px solid #0f0;
-            white-space: nowrap;
-            overflow: hidden;
-            display: inline-block;
-            animation: typing 2s steps(20) infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        .btn {
-            display: block;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: 0.3s;
-            text-transform: uppercase;
-            position: relative;
-        }
-
-        .tt { background: transparent; color: #0f0; border: 1px solid #0f0; }
-        .fb { background: #0f0; color: #000; border: 1px solid #0f0; }
-        .rbx { background: transparent; color: #fff; border: 1px solid #fff; }
-
-        .btn:hover {
-            background: #0f0;
-            color: #000;
-            box-shadow: 0 0 40px #0f0;
-            transform: scale(1.05);
-        }
-
-    </style>
-</head>
-<body>
-
-    <canvas id="matrix"></canvas>
-
-    <div class="card">
-        <img src="FB_IMG_1777521801062.jpg" alt="ZENGY" class="profile-img">
-        <h1>ZENGY</h1>
-        <div class="status">ACCESS GRANTED // OSAM_3074</div>
-        
-        <a href="https://www.tiktok.com/@adamosama3074" class="btn tt">TIKTOK // CONNECT</a>
-        <a href="https://www.facebook.com/share/16rWw6tdSj/" class="btn fb">FACEBOOK // LOGIN</a>
-        <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="btn rbx">ROBLOX // PLAY</a>
-    </div>
-
-    <script>
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
-
-        function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#0f0";
-            ctx.font = fontSize + "px arial";
-            for (let i = 0; i < drops.length; i++) {
-                const text = letters[Math.floor(Math.random() * letters.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(draw, 33);
-    </script>
-
-</body>
-</html>
+            box-shadow: 0 0 50px #0f0
+                    
