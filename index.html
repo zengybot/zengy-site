@@ -1,4 +1,4 @@
-            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
 
         body {
-            /* اسم صورة الخلفية اللي في ملفاتك */
+            /* اسم الصورة الطويل بتاعك */
             background-image: url('C7957087f5841cc81bdd53b1dca7145d.jpg'); 
             background-size: cover;
             background-position: center;
@@ -20,27 +20,173 @@
             min-height: 100vh;
             font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
+            position: relative;
         }
 
-        /* تأثير الميتريكس (الأكواد اللي بتنزل) */
+        /* خلفية الميتريكس */
         canvas {
             position: fixed;
             top: 0; left: 0;
-            z-index: 0;
-            opacity: 0.15;
+            z-index: 1; /* خليناها 1 */
+            opacity: 0.2;
         }
 
+        /* طبقة التعتيم - اتأكد إن الـ z-index أقل من الكارت */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, transparent 20%, #000 90%);
-            z-index: 1;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2;
         }
 
         .card {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 50px 30px;
+            background: rgba(10, 10, 10, 0.85);
+            padding: 40px 25px;
             border-radius: 20px;
-            box-shadow: 0 0 50px #0f0
-                    
+            box-shadow: 0 0 40px #0f0;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid #0f0;
+            backdrop-filter: blur(10px);
+            z-index: 10; /* الكارت فوق كل حاجة */
+            position: relative;
+            animation: glitch 4s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            5% { transform: translate(-2px, 2px); }
+            10% { transform: translate(2px, -2px); }
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid #0f0;
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        /* اسم DEMONE وتأثير الدم الأخضر الحقيقي */
+        .demon-name {
+            color: #0f0;
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 15px #0f0;
+        }
+
+        /* أنيميشن الدم السائل */
+        .blood {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #0f0;
+            font-size: 0.5em;
+            display: flex;
+            gap: 10px;
+        }
+
+        .drop {
+            width: 4px;
+            height: 15px;
+            background: #0f0;
+            border-radius: 0 0 5px 5px;
+            animation: drip 2s infinite ease-in;
+            box-shadow: 0 0 10px #0f0;
+        }
+
+        .drop:nth-child(2) { animation-delay: 0.5s; height: 25px; }
+        .drop:nth-child(3) { animation-delay: 1.2s; height: 10px; }
+
+        @keyframes drip {
+            0% { transform: translateY(0) scaleY(1); opacity: 1; }
+            100% { transform: translateY(50px) scaleY(2); opacity: 0; }
+        }
+
+        .status {
+            color: #0f0;
+            font-size: 0.8em;
+            margin: 20px 0;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .btn {
+            display: block;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .tt { background: #000; color: #fff; border: 1px solid #ff0050; }
+        .fb { background: #1877F2; color: white; }
+        .rbx { background: white; color: black; }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix"></canvas>
+
+    <div class="card">
+        <img src="FB_IMG_1777521801062.jpg" alt="DEMONE" class="profile-img">
+        
+        <h1 class="demon-name">
+            DEMONE
+            <div class="blood">
+                <div class="drop"></div>
+                <div class="drop"></div>
+                <div class="drop"></div>
+            </div>
+        </h1>
+        
+        <span class="status">SYSTEM_STATUS: OVERRIDE_ACTIVE</span>
+        
+        <a href="https://www.tiktok.com/@adamosama3074" class="btn tt">TIKTOK // @adamosama3074</a>
+        <a href="https://www.facebook.com/share/16rWw6tdSj/" class="btn fb">FACEBOOK // OFFICIAL</a>
+        <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="btn rbx">ROBLOX // PROFILE</a>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "01";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0f0";
+            ctx.font = fontSize + "px arial";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 33);
+    </script>
+</body>
+</html>
