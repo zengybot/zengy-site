@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEMONE // ELITE</title>
+    <title>DEMONE // ELITE SYSTEM</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -14,28 +14,26 @@
             overflow: hidden; position: relative;
         }
 
-        /* الأرقام اللي بتتحرك في الخلفية (الميتريكس) */
+        /* ميتريكس الأرقام الخاصة بك */
         canvas {
             position: fixed; top: 0; left: 0;
-            z-index: 1; opacity: 0.3;
+            z-index: 1; opacity: 0.25;
         }
 
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, transparent 20%, #000 90%);
-            z-index: 2;
+            background: rgba(0, 0, 0, 0.6); z-index: 2;
         }
 
         .card {
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             border: 2px solid #0f0;
-            padding: 30px 20px;
+            padding: 35px 20px;
             border-radius: 20px;
-            width: 85%; max-width: 380px; /* مقاس متوسط ومظبوط في النص */
+            width: 85%; max-width: 380px; 
             text-align: center;
-            position: relative;
-            z-index: 10;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+            position: relative; z-index: 10;
+            box-shadow: 0 0 30px #0f0;
         }
 
         .profile-img {
@@ -46,37 +44,38 @@
         }
 
         .demon-name {
-            color: #0f0; font-size: 3em; letter-spacing: 5px;
-            position: relative; margin-bottom: 40px;
+            color: #0f0; font-size: 3.2em; letter-spacing: 6px;
+            position: relative; margin-bottom: 45px;
             text-shadow: 0 0 15px #0f0; display: inline-block;
         }
 
-        /* خيوط الدم الأخضر السايلة */
-        .blood-stream {
-            position: absolute; top: 90%; width: 3px; background: #0f0;
-            border-radius: 0 0 10px 10px; box-shadow: 0 0 10px #0f0;
-            animation: flow 2s infinite ease-in; opacity: 0;
+        /* خيوط السائل الأخضر الطويلة */
+        .liquid-thread {
+            position: absolute; top: 95%; width: 3px;
+            background: #0f0; border-radius: 0 0 10px 10px;
+            box-shadow: 0 0 10px #0f0;
+            animation: flowDown 3s infinite ease-in; opacity: 0;
         }
 
-        @keyframes flow {
+        @keyframes flowDown {
             0% { height: 0; opacity: 1; }
-            70% { height: 150px; opacity: 1; }
-            100% { height: 250px; opacity: 0; transform: translateY(30px); }
+            70% { height: 220px; opacity: 1; }
+            100% { height: 300px; opacity: 0; transform: translateY(40px); }
         }
 
         .btn {
-            display: block; padding: 12px; margin: 10px 0;
+            display: block; padding: 14px; margin: 12px 0;
             border: 1px solid #0f0; border-radius: 8px;
             text-decoration: none; font-weight: bold; color: #fff;
-            font-size: 1em; transition: 0.3s;
-            position: relative; z-index: 20; background: rgba(0,0,0,0.8);
+            transition: 0.3s; position: relative; z-index: 20;
+            background: rgba(0,0,0,0.8); text-transform: uppercase;
         }
 
         .tt { border-color: #ff0050; }
         .fb { background: #1877f2; border: none; }
         .rbx { background: #fff; color: #000; border: none; }
-
         .btn:hover { background: #0f0; color: #000; box-shadow: 0 0 20px #0f0; }
+
     </style>
 </head>
 <body>
@@ -88,16 +87,16 @@
         <img src="FB_IMG_1777521801062.jpg" class="profile-img">
         
         <h1 class="demon-name">DEMONE
-            <div class="blood-stream" style="left:5%; animation-delay:0s"></div>
-            <div class="blood-stream" style="left:30%; animation-delay:0.7s"></div>
-            <div class="blood-stream" style="left:55%; animation-delay:1.4s"></div>
-            <div class="blood-stream" style="left:80%; animation-delay:0.3s"></div>
-            <div class="blood-stream" style="left:95%; animation-delay:1s"></div>
+            <div class="liquid-thread" style="left:5%; animation-delay:0s"></div>
+            <div class="liquid-thread" style="left:25%; animation-delay:0.8s"></div>
+            <div class="liquid-thread" style="left:50%; animation-delay:1.5s"></div>
+            <div class="liquid-thread" style="left:75%; animation-delay:0.4s"></div>
+            <div class="liquid-thread" style="left:95%; animation-delay:1.1s"></div>
         </h1>
 
-        <a href="https://www.tiktok.com/@adamosama3074" class="btn tt">TIKTOK // CONNECT</a>
-        <a href="https://www.facebook.com/share/16rWw6tdSj/" class="btn fb">FACEBOOK // OFFICIAL</a>
-        <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="btn rbx">ROBLOX // PROFILE</a>
+        <a href="https://www.tiktok.com/@adamosama3074" class="btn tt">TIKTOK</a>
+        <a href="https://www.facebook.com/share/16rWw6tdSj/" class="btn fb">FACEBOOK</a>
+        <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="btn rbx">ROBLOX</a>
     </div>
 
     <script>
@@ -105,7 +104,9 @@
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        const letters = "0101010101";
+
+        // الأرقام الخاصة بك
+        const customNumbers = "926292510620622910001010101010";
         const fontSize = 16;
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
@@ -116,16 +117,18 @@
             ctx.fillStyle = "#0f0";
             ctx.font = fontSize + "px arial";
             for (let i = 0; i < drops.length; i++) {
-                const text = letters[Math.floor(Math.random() * letters.length)];
+                const text = customNumbers[Math.floor(Math.random() * customNumbers.length)];
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
                 if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             }
         }
         setInterval(draw, 33);
+
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
     </script>
 </body>
+</html>
