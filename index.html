@@ -1,122 +1,69 @@
-                          <<!<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEMONE // ELITE SYSTEM</title>
+    <title>DEMONE // ELITE</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            background-image: url('C7957087f5841cc81bdd53b1dca7145d.jpg'); 
+            background: #000 url('C7957087f5841cc81bdd53b1dca7145d.jpg') no-repeat center fixed;
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: 'Courier New', Courier, monospace;
-            overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; margin: 0; font-family: monospace; overflow: hidden;
         }
-
+        /* طبقة حماية عشان الكود يظهر */
         .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 1;
         }
-
         .card {
-            background: rgba(10, 10, 10, 0.95);
-            padding: 40px 20px;
-            border-radius: 25px;
-            box-shadow: 0 0 40px #0f0;
-            max-width: 380px;
-            width: 90%;
-            text-align: center;
-            border: 2px solid #0f0;
-            position: relative;
-            z-index: 10;
+            background: rgba(0,0,0,0.9); border: 2px solid #0f0;
+            padding: 40px 20px; border-radius: 20px; width: 90%; max-width: 350px;
+            text-align: center; position: relative; z-index: 10; box-shadow: 0 0 20px #0f0;
         }
-
         .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 3px solid #0f0;
-            margin-bottom: 20px;
-            object-fit: cover;
-            box-shadow: 0 0 20px #0f0;
-            position: relative;
-            z-index: 20;
+            width: 120px; height: 120px; border-radius: 50%;
+            border: 2px solid #0f0; margin-bottom: 20px; object-fit: cover;
         }
-
-        .demon-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 40px;
-        }
-
         .demon-name {
-            color: #0f0;
-            font-size: 3.5em;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            text-shadow: 0 0 20px #0f0;
-            position: relative;
-            z-index: 25;
+            color: #0f0; font-size: 3em; letter-spacing: 5px;
+            position: relative; margin-bottom: 40px; text-shadow: 0 0 10px #0f0;
         }
-
-        /* كود خيوط الدم اللي نازلة */
-        .blood-strings {
-            position: absolute;
-            top: 80%;
-            left: 0;
-            width: 100%;
-            height: 300px; /* طول الخيوط */
-            pointer-events: none;
-            z-index: 15;
+        /* خيوط الدم الأخضر */
+        .drop {
+            position: absolute; width: 3px; background: #0f0;
+            top: 100%; border-radius: 0 0 5px 5px;
+            animation: drip 2s infinite linear; box-shadow: 0 0 8px #0f0;
         }
-
-        .string {
-            position: absolute;
-            width: 3px;
-            background: linear-gradient(to bottom, #0f0, transparent);
-            box-shadow: 0 0 10px #0f0;
-            border-radius: 0 0 5px 5px;
-            animation: drip 3s infinite ease-in-out;
-        }
-
-        /* توزيع الخيوط تحت الحروف */
-        .string:nth-child(1) { left: 10%; height: 150px; animation-delay: 0s; }
-        .string:nth-child(2) { left: 25%; height: 220px; animation-delay: 0.5s; }
-        .string:nth-child(3) { left: 45%; height: 180px; animation-delay: 1.2s; }
-        .string:nth-child(4) { left: 65%; height: 250px; animation-delay: 0.8s; }
-        .string:nth-child(5) { left: 85%; height: 160px; animation-delay: 0.3s; }
-
         @keyframes drip {
-            0% { transform: scaleY(0.1); opacity: 0; }
-            50% { transform: scaleY(1); opacity: 1; }
-            100% { transform: scaleY(1.2); opacity: 0; transform: translateY(50px); }
+            0% { height: 0; opacity: 1; }
+            70% { height: 100px; opacity: 1; }
+            100% { height: 150px; opacity: 0; transform: translateY(50px); }
         }
-
         .btn {
-            display: block;
-            padding: 14px;
-            margin: 15px 0;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: 0.3s;
-            text-transform: uppercase;
-            border: 1px solid #0f0;
-            position: relative;
-            z-index: 30; /* الأزرار فوق خيوط الدم عشان تضغط عليها */
-            background: rgba(0,0,0,0.8);
+            display: block; padding: 12px; margin: 10px 0;
+            border: 1px solid #0f0; border-radius: 5px;
+            text-decoration: none; font-weight: bold; transition: 0.3s;
         }
-
-        .tt { color: #fff; border-color: #ff0050; }
-      
+        .tt { background: #000; color: #fff; border-color: #ff0050; }
+        .fb { background: #1877F2; color: #fff; border: none; }
+        .rbx { background: #fff; color: #000; border: none; }
+        .btn:hover { background: #0f0; color: #000; box-shadow: 0 0 20px #0f0; }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="card">
+        <img src="FB_IMG_1777521801062.jpg" class="profile-img">
+        <h1 class="demon-name">DEMONE
+            <div class="drop" style="left:10%; animation-delay:0s"></div>
+            <div class="drop" style="left:30%; animation-delay:0.5s"></div>
+            <div class="drop" style="left:50%; animation-delay:1.2s"></div>
+            <div class="drop" style="left:70%; animation-delay:0.8s"></div>
+            <div class="drop" style="left:90%; animation-delay:0.3s"></div>
+        </h1>
+        <a href="https://www.tiktok.com/@adamosama3074" class="btn tt">TIKTOK</a>
+        <a href="https://www.facebook.com/share/16rWw6tdSj/" class="btn fb">FACEBOOK</a>
+        <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="btn rbx">ROBLOX</a>
+    </div>
+</body>
+</html>
