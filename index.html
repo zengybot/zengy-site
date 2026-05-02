@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>zengy 👹 bot</title>
     <style>
-        /* تصفير الإعدادات */
         * {
             margin: 0;
             padding: 0;
@@ -13,104 +12,88 @@
         }
 
         body {
-            /* السطر الحاسم: اسم الصورة اللي في مشروعك بالظبط */
+            /* اسم صورة الخلفية اللي في ملفاتك */
             background-image: url('C7957087f5841cc81bdd53b1dca7145d.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            background-color: #050505; /* لون احتياطي */
+            background-color: #000;
             
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
         }
 
-        /* طبقة تعتيم احترافية عشان الصورة زحمة والكلام يبان */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7); /* تغميق الخلفية بنسبة 70% */
+            background: rgba(0, 0, 0, 0.7);
             z-index: -1;
         }
 
         .card {
-            background: rgba(20, 20, 20, 0.6); /* خلفية الكارت شفافة */
-            padding: 40px 25px;
+            background: rgba(20, 20, 20, 0.65);
+            padding: 35px 20px;
             border-radius: 30px;
-            box-shadow: 0 0 35px rgba(0, 255, 0, 0.2);
-            max-width: 350px;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+            max-width: 360px;
             width: 90%;
             text-align: center;
             border: 1px solid rgba(0, 255, 0, 0.3);
-            backdrop-filter: blur(15px); /* تأثير القزاز المغبش */
+            backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
         }
 
         .profile-img {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             border: 3px solid #00ff00;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             object-fit: cover;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
         }
 
         h1 { 
             color: #00ff00; 
-            font-size: 2.2em;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+            font-size: 2.1em;
+            margin-bottom: 5px;
             text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
 
-        p { 
-            color: #ffffff; 
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
+        p { color: #ffffff; margin-bottom: 25px; opacity: 0.9; }
 
         .btn {
             display: block;
-            padding: 14px;
-            margin: 15px 0;
+            padding: 13px;
+            margin: 12px 0;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
+            font-size: 1.05em;
+            transition: 0.3s ease;
         }
 
-        .fb { 
-            background-color: #1877F2; 
-            color: white; 
-            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
-        }
-
-        .rbx { 
-            background-color: #ffffff; 
-            color: #000; 
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-        }
+        /* ألوان الأزرار */
+        .fb { background-color: #1877F2; color: white; }
+        .rbx { background-color: #ffffff; color: #000; }
+        /* لون التيك توك المميز */
+        .tt { background-color: #000000; color: white; border: 1px solid #ff0050; }
 
         .btn:hover { 
-            transform: translateY(-5px);
+            transform: scale(1.03);
             filter: brightness(1.2);
-            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
         }
 
-        /* أنيميشن خفيف لاسم "zengy" */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ff00; }
+            to { text-shadow: 0 0 20px #00ff00; }
         }
-        h1 { animation: pulse 2s infinite alternate; }
+        h1 { animation: glow 1.5s infinite alternate; }
 
     </style>
 </head>
@@ -118,10 +101,10 @@
 
     <div class="card">
         <img src="FB_IMG_1777521801062.jpg" alt="Profile" class="profile-img">
-        
         <h1>zengy 👹 bot</h1>
+        <p>أهلاً بك في موقع zengy 👑</p>
         
-        <p>أهلاً بك في موقع zengy 👹 الملكي 👑</p>
+        <a href="https://www.tiktok.com/@adamosama3074" class="btn tt">تابعني على تيك توك 📱</a>
         
         <a href="https://www.facebook.com/share/16rWw6tdSj/" class="btn fb">فيسبوك الرسمي 👍</a>
         <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="btn rbx">روبلوكس 🎮</a>
