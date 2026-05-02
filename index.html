@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+                    <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* اسم الصورة بتاعك */
             background-image: url('C7957087f5841cc81bdd53b1dca7145d.jpg'); 
             background-size: cover;
             background-position: center;
@@ -22,31 +21,24 @@
             overflow: hidden;
         }
 
-        /* طبقة سواد عشان الصورة تظهر هيبة والكلام يبان */
         .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 1;
         }
 
         .card {
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             padding: 40px 20px;
             border-radius: 25px;
             box-shadow: 0 0 40px #0f0;
-            max-width: 360px;
+            max-width: 380px;
             width: 90%;
             text-align: center;
             border: 2px solid #0f0;
             position: relative;
-            z-index: 10; /* الكارت فوق السواد */
-            animation: shake 4s infinite;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+            z-index: 10;
         }
 
         .profile-img {
@@ -57,58 +49,63 @@
             margin-bottom: 20px;
             object-fit: cover;
             box-shadow: 0 0 20px #0f0;
+            position: relative;
+            z-index: 20;
         }
 
-        /* اسم DEMONE والدم الأخضر */
-        .demon-name {
-            color: #0f0;
-            font-size: 3em;
-            text-transform: uppercase;
-            letter-spacing: 5px;
+        .demon-container {
             position: relative;
             display: inline-block;
-            text-shadow: 0 0 15px #0f0;
+            margin-bottom: 40px;
         }
 
-        .blood-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: -5px;
-            margin-bottom: 20px;
+        .demon-name {
+            color: #0f0;
+            font-size: 3.5em;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 0 0 20px #0f0;
+            position: relative;
+            z-index: 25;
         }
 
-        .drop {
-            width: 4px;
-            height: 0;
-            background: #0f0;
-            border-radius: 0 0 5px 5px;
+        /* كود خيوط الدم اللي نازلة */
+        .blood-strings {
+            position: absolute;
+            top: 80%;
+            left: 0;
+            width: 100%;
+            height: 300px; /* طول الخيوط */
+            pointer-events: none;
+            z-index: 15;
+        }
+
+        .string {
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(to bottom, #0f0, transparent);
             box-shadow: 0 0 10px #0f0;
-            animation: drip 2s infinite ease-in;
+            border-radius: 0 0 5px 5px;
+            animation: drip 3s infinite ease-in-out;
         }
 
-        .drop:nth-child(2) { animation-delay: 0.6s; }
-        .drop:nth-child(3) { animation-delay: 1.2s; }
+        /* توزيع الخيوط تحت الحروف */
+        .string:nth-child(1) { left: 10%; height: 150px; animation-delay: 0s; }
+        .string:nth-child(2) { left: 25%; height: 220px; animation-delay: 0.5s; }
+        .string:nth-child(3) { left: 45%; height: 180px; animation-delay: 1.2s; }
+        .string:nth-child(4) { left: 65%; height: 250px; animation-delay: 0.8s; }
+        .string:nth-child(5) { left: 85%; height: 160px; animation-delay: 0.3s; }
 
         @keyframes drip {
-            0% { height: 0; opacity: 1; }
-            50% { height: 30px; opacity: 1; }
-            100% { height: 50px; opacity: 0; transform: translateY(20px); }
-        }
-
-        .status {
-            color: #0f0;
-            font-size: 0.8em;
-            margin-bottom: 25px;
-            display: block;
-            opacity: 0.8;
-            letter-spacing: 2px;
+            0% { transform: scaleY(0.1); opacity: 0; }
+            50% { transform: scaleY(1); opacity: 1; }
+            100% { transform: scaleY(1.2); opacity: 0; transform: translateY(50px); }
         }
 
         .btn {
             display: block;
             padding: 14px;
-            margin: 12px 0;
+            margin: 15px 0;
             border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
@@ -116,41 +113,10 @@
             transition: 0.3s;
             text-transform: uppercase;
             border: 1px solid #0f0;
+            position: relative;
+            z-index: 30; /* الأزرار فوق خيوط الدم عشان تضغط عليها */
+            background: rgba(0,0,0,0.8);
         }
 
-        .tt { background: #000; color: #fff; border-color: #ff0050; }
-        .fb { background: #1877F2; color: #fff; border-color: #1877F2; }
-        .rbx { background: #fff; color: #000; border-color: #fff; }
-
-        .btn:hover {
-            background: #0f0;
-            color: #000;
-            box-shadow: 0 0 30px #0f0;
-            transform: translateY(-3px);
-        }
-
-    </style>
-</head>
-<body>
-
-    <div class="overlay"></div>
-
-    <div class="card">
-        <img src="FB_IMG_1777521801062.jpg" alt="DEMONE" class="profile-img">
+        .tt { color: #fff; border-color: #ff0050; }
         
-        <h1 class="demon-name">DEMONE</h1>
-        <div class="blood-container">
-            <div class="drop"></div>
-            <div class="drop"></div>
-            <div class="drop"></div>
-        </div>
-        
-        <span class="status">// SYSTEM OVERRIDE ACTIVE //</span>
-        
-        <a href="https://www.tiktok.com/@adamosama3074" class="btn tt">TIKTOK // @adamosama3074</a>
-        <a href="https://www.facebook.com/share/16rWw6tdSj/" class="btn fb">FACEBOOK // OFFICIAL</a>
-        <a href="https://www.roblox.com/user.aspx?username=Power_i62" class="btn rbx">ROBLOX // PROFILE</a>
-    </div>
-
-</body>
-</html>
